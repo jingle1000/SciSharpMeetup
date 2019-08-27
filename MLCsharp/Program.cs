@@ -16,17 +16,12 @@ namespace MLCsharp
                 yield return (a[i], b[i]);
             }
         }
-        public bool Enabled { get; set; } = true;
-        public string Name => "Linear Regression";
-        public bool IsImportingGraph { get; set; } = false;
 
         public int training_epochs = 1000;
 
         // Parameters
         float learning_rate = 0.01f;
         int display_step = 50;
-
-        NumPyRandom rng = np.random;
         NDArray train_X, train_Y;
         int n_samples;
 
@@ -44,7 +39,7 @@ namespace MLCsharp
             var y = np.array<float>(yvals.ToArray());
             this.train_X = x;
             this.train_Y = y;
-            n_samples = train_X.shape[0];
+            this.n_samples = train_X.shape[0];
         }
         public bool Run()
         {
